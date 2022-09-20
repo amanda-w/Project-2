@@ -11,9 +11,9 @@ Fork & Clone this repo.
 - [ ] In this space below, list **THREE** ideas for your Project 2. For each idea, include [user stories](https://www.atlassian.com/agile/project-management/user-stories) for each idea and a link to the API(s) you want to use for it.
 
 --------------------------------------------------------
-1. 
-2. 
-3.
+1. Recipe / Meal Planner
+2. Travel App
+3. Food Finder
 ---------------------------------------------------------
 
 - [ ] Make a PR when you're done!
@@ -30,8 +30,14 @@ In the space below:
 ----------------------------------------------------------
 ### ERD
 
+
+
 ----------------------------------------------------------
 ### User Stories
+
+As someone who has difficulty deciding what to eat,
+I want to have my meals planned out ahead of time
+So that I know what groceries to buy and don't need to worry about what I will be eating.
 
 ----------------------------------------------------------
 ### Wireframes
