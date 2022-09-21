@@ -7,7 +7,8 @@ async function createUser() {
     try {
         const newUser = await db.user.create({
             name: "My Name",
-            email: "myemail@gmail.com"
+            email: "myemail@gmail.com",
+            password: "hello1234"
         });
         console.log('my new user >>>', newUser);
     } catch (error) {
@@ -16,7 +17,7 @@ async function createUser() {
     
 }
 // @todo run createUser function below
-
+//createUser();
 // READ
 // find one user
 async function findOneUser() {
@@ -87,3 +88,22 @@ async function deleteUser() {
     }
 }
 // @todo run deleteUser function below
+
+
+// CREATE
+async function createMealPlan() {
+    try {
+        const newMealPlan = await db.meal_plan.create({
+            userId: 1,
+            type_of_meal: "dinner",
+            recipe: "pasta",
+            meal_date: 2022-09-20
+        });
+        console.log('my new user >>>', newMealPlan);
+    } catch (error) {
+        console.log('new user was not created b/c of >>>', error);
+    }
+    
+}
+
+createMealPlan();
