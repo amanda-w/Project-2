@@ -97,7 +97,7 @@ async function createMealPlan() {
             userId: 1,
             type_of_meal: "dinner",
             recipe: "pasta",
-            meal_date: 2022-09-20
+            meal_date: new Date('October 1, 2022')
         });
         console.log('my new user >>>', newMealPlan);
     } catch (error) {
