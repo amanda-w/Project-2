@@ -14,9 +14,6 @@ module.exports = {
       type_of_meal: {
         type: Sequelize.STRING
       },
-      recipe: {
-        type: Sequelize.STRING
-      },
       meal_date: {
         type: Sequelize.DATE
       },

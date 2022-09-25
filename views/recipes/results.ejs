@@ -1,17 +1,4 @@
 <h1>Results</h1>
-<% if (Array.isArray(recipes) && recipes.length > 0) { %>
-<% recipes.forEach(recipe => { %>
-<p> <%= recipe.name%> </p>
-<p> <%= recipe.description%> </p>
-<img src="<%= recipe.thumbnail_url%>" width="300" height ="300">
-<!-- <a href="<%= recipe.video_url%>">Watch video</a> -->
-<form method="post" action="/recipes/add">
-    <input name="name" type="text" value="<%= recipe.name%>" hidden>
-    <input name="description" type="text" value="<%= recipe.description%>" hidden>
-    <button type="submit">Add recipe</button>
-</form>
-<% }) %> 
-<% } %> 
 <form method="get" action="/recipes/search">
     <button type="submit">Back to Search</button>
 </form>
@@ -19,3 +6,20 @@
 <form method="get" action="/">
     <button type="submit">Back to Homepage</button>
 </form>
+
+<% if (Array.isArray(recipes) && recipes.length > 0) { %>
+<% recipes.forEach(recipe => { %>
+<p> <%= recipe.name%> </p>
+<p> <%= recipe.description%> </p>
+<img src="<%= recipe.thumbnail_url%>" width="300" height ="300">
+<!-- <a href="<%= recipe.video_url%>">Watch video</a> -->
+<form method="POST" action="/recipes/new">
+    <input name="name" type="text" value="<%= recipe.name%>" hidden>
+    <input name="description" type="text" value="<%= recipe.description%>" hidden>
+    <input name="image" type="text" value="<%= recipe.thumbnail_url%>" hidden>
+    <input type="text" value="<%= currentUser.id %>" hidden>
+    <button type="submit">Add recipe</button>
+</form>
+<% }) %> 
+<% } %> 
+
