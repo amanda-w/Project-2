@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const methodOverride = require('method-override');
+const db = require('./models')
 
 // console.log(SECRET_SESSION);
 const SECRET_SESSION = process.env.SECRET_SESSION;
@@ -15,10 +16,10 @@ console.log('yoooo...', SECRET_SESSION);
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
-app.use(methodOverride('_method'));
 
 app.use(session({
   secret: SECRET_SESSION,    // What we actually will be giving the user on our site as a session cookie
@@ -60,10 +61,21 @@ app.use('/recipes', require('./controllers/recipes'));
 //app.use('/meal_plan', require('./controllers/meal_plan'));
 
 // Put Route
-app.put('/profile/:id', isLoggedIn, async (req, res) => {
+app.put('/profile/:id', async (req, res) => {
   try {
       const foundUser = await db.user.findOne({ where: { email: req.body.email }});
-      if (foundUser.email && foundUser.id !== req.user.id) {
+      if (!foundUser) {
+        const usersUpdated = await db.user.update({
+          email: req.body.email,
+          name: req.body.name
+        }, {
+          where: {
+            id: req.params.id
+          }
+        });
+
+        res.redirect('/profile'); // route
+      } else if (foundUser.email && foundUser.id !== req.user.id) {
         req.flash('error', 'Email already exists. Please try again.');
         res.redirect('/profile');
       } else {
@@ -90,6 +102,10 @@ app.put('/profile/:id', isLoggedIn, async (req, res) => {
     res.render('edit');
   }
 });
+
+app.get('*', (req, res) => {
+  res.render('404');
+})
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
