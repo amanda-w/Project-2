@@ -1,11 +1,9 @@
 <h1>Results</h1>
-<form method="get" action="/recipes/search">
-    <button type="submit">Back to Search</button>
-</form>
 
-<form method="get" action="/">
-    <button type="submit">Back to Homepage</button>
-</form>
+<a class="btn btn-primary" href="/recipes/search">Back to Search</a>
+<a class="btn btn-primary" href="/recipes">My recipes</a>
+<a class="btn btn-primary" href="/">Back to Homepage</a>
+
 
 <% if (Array.isArray(recipes) && recipes.length > 0) { %>
 <% recipes.forEach(recipe => { %>

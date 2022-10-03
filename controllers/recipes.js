@@ -83,4 +83,18 @@ router.post('/new', isLoggedIn, async (req, res) => {
 
 // DELETE
 
+router.delete('/:id', isLoggedIn, async (req, res) => {
+    try {
+        let deleteRecipe = await db.recipe.destroy({
+        where: {id: req.params.id}
+        })
+    res.redirect('/recipes')
+    } catch (error) {
+          console.log('*********************ERROR***********************');
+          console.log(error);
+          console.log('**************************************************');
+          res.redirect('/recipes');
+    }
+})
+
 module.exports = router;
