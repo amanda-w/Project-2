@@ -28,28 +28,37 @@ In the space below:
 * either embed or link wireframes for every page of your app
 
 ----------------------------------------------------------
-### ERD
-
-
-
-----------------------------------------------------------
 ### User Stories
 
 As someone who enjoys eating good food,
-I enjoy browsing recipes and looking at different ideas
-that I can try to make.
+I love browsing recipes and looking at different ideas
+that I can try to make myself.
 
 ----------------------------------------------------------
 ### Wireframes
 
 ![Wire Frame](/img/Project%202%20Framework.png)
 
+
+API used from RapidAPI.com.
+
 ----------------------------------------------------------
 
 ### Installation Instructions
 
 1. ```Git Clone``` this repository to your computer.
-2. 
+2. ```cd recipes``` change directories to get to this directory.
+3. Open in VS Code.
+4. ```npm install```
+5. ```touch .env``` to create a .env file.
+6. Add a ```SECRET_SESSION``` inside the ```.env``` file.
+7. Go to RapidAPI.com to get an API key from Tasty API.
+8. Add the ```API_TOKEN``` inside the ```.env``` file.
+9. Create a database with ```npm install sequelize-cl``` and ```npx sequelize-cli db:create mealPlanner```
+10. Migarate the database with ```npx sequelize-cli db:migrate```
+11. Start the server with ```nodemon```
+12. Open the browser and navigate to localhost:3000 to view the app.
+
 
 ----------------------------------------------------------
 
